@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ABCMoneyTransfer_Project.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Transactions</h2>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Add Transaction
+        </a>
+        <a asp-action="TransactionReport" class="btn btn-info ml-3">Transaction Report</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Transfer Amount (MYR)</th>
+                <th>Exchange Rate</th>
+                <th>Payout Amount (NPR)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var transaction in Model)
+                {
+                    <tr>
+                        <td>@transaction.SenderFirstName @transaction.SenderLastName</td>
+                        <td>@transaction.ReceiverFirstName @transaction.ReceiverLastName</td>
+                        <td>@transaction.TransferAmount.ToString()</td>
+                        <td>@transaction.ExchangeRate.ToString("F2")</td>
+                        <td>@transaction.PayoutAmount.ToString()</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@transaction.Id" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye"></i> View
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@transaction.Id" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@transaction.Id" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No transactions found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

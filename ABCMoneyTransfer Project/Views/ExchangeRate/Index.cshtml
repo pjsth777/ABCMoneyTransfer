@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Exchange Rates";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Exchange Rate (MYR to NPR)</h2>
+
+    @if (ViewBag.ExchangeRate != null)
+    {
+        <div class="alert alert-success text-center mt-3">
+            <h4>The current exchange rate is:</h4>
+            <p class="display-4">@ViewBag.ExchangeRate MYR = 1 NPR</p>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger text-center mt-3">
+            <strong>Error:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-3">
+            <strong>Loading:</strong> Please wait while we fetch the latest exchange rates.
+        </div>
+    }
+</div>

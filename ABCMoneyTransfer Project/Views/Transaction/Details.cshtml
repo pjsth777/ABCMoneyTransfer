@@ -1,0 +1,28 @@
+﻿@model ABCMoneyTransfer_Project.Models.Transaction
+
+<div class="container mt-4">
+    <h2 class="text-center">Transaction Details</h2>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-primary text-white">
+            Transaction Information
+        </div>
+        <div class="card-body">
+            <p><strong>Sender Name:</strong> @Model.SenderFirstName @Model.SenderMiddleName @Model.SenderLastName</p>
+            <p><strong>Receiver Name:</strong> @Model.ReceiverFirstName @Model.ReceiverMiddleName @Model.ReceiverLastName</p>
+            <p><strong>Sender Address:</strong> @Model.SenderAddress</p>
+            <p><strong>Sender Country:</strong> @Model.SenderCountry</p>
+            <p><strong>Receiver Address:</strong> @Model.ReceiverAddress</p>
+            <p><strong>Receiver Country:</strong> @Model.ReceiverCountry</p>
+            <p><strong>Bank Name:</strong> @Model.BankName</p>
+            <p><strong>Account Number:</strong> @Model.AccountNumber</p>
+            <p><strong>Transfer Amount:</strong> @Model.TransferAmount.ToString("C2")</p>
+            <p><strong>Exchange Rate:</strong> @Model.ExchangeRate.ToString("F2")</p>
+            <p><strong>Payout Amount:</strong> @Model.PayoutAmount.ToString("C2")</p>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to Transactions</a>
+    </div>
+</div>
