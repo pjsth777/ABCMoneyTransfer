@@ -83,7 +83,7 @@
             </div>
             <div class="mb-3">
                 <label for="ExchangeRate" class="form-label">Exchange Rate (MYR to NPR)</label>
-                <input asp-for="ExchangeRate" class="form-control" id="ExchangeRate" type="number" value="@Model.ExchangeRate" />
+                <input asp-for="ExchangeRate" class="form-control" id="ExchangeRate" type="number" value="@Model.ExchangeRate" disabled />
                 <span asp-validation-for="ExchangeRate" class="text-danger"></span>
             </div>
             <div class="mb-3">

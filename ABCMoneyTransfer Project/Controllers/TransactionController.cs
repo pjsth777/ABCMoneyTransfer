@@ -44,23 +44,30 @@ namespace ABCMoneyTransfer_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Transaction transaction)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
+                return View(transaction);
+            }
+
+            try
+            {
+                var exchangeRate = await _exchangeRateService.GetExchangeRatesAsync();
+
+                if (exchangeRate == null || !exchangeRate.HasValue)
                 {
-                    var exchangeRate = await _exchangeRateService.GetExchangeRatesAsync();
-
-
-                    transaction.ExchangeRate = exchangeRate.Value;
-                    transaction.PayoutAmount = transaction.TransferAmount * transaction.ExchangeRate;
-
-                    await _transactionService.AddTransactionAsync(transaction);
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError("", "Unable to retrieve the current exchange rate. Please try again later.");
+                    return View(transaction);
                 }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", $"An error occured: {ex.Message}");
-                }
+
+                transaction.ExchangeRate = exchangeRate.Value;
+                transaction.PayoutAmount = transaction.TransferAmount * transaction.ExchangeRate;
+
+                await _transactionService.AddTransactionAsync(transaction);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"An error occured while processing the transaction: {ex.Message}");
             }
 
             return View(transaction);

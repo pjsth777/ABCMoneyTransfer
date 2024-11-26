@@ -74,16 +74,28 @@ namespace ABCMoneyTransfer_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                return View(model);
+            }
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
-                ModelState.AddModelError("", "Invalid login Attempt.");
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Your account has been locked out. Please try again later.");
+            }
+            else if (result.RequiresTwoFactor)
+            {
+                return RedirectToAction("SendTwoFactorCode");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid login Attempt. Please check your credentials.");
             }
 
             return View(model);

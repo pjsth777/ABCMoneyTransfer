@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ABCMoneyTransfer_Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa2abc31b7a5cb8a86479103ef433f517599a385")]
 [assembly: System.Reflection.AssemblyProductAttribute("ABCMoneyTransfer_Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ABCMoneyTransfer_Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

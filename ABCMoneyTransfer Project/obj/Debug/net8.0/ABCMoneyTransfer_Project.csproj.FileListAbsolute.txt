@@ -270,3 +270,4 @@ E:\MyBigProjects\ABC Money Transfer Project\ABC Money Transfer Project\ABCMoneyT
 E:\MyBigProjects\ABC Money Transfer Project\ABC Money Transfer Project\ABCMoneyTransfer Project\obj\Debug\net8.0\ABCMoneyTransfer_Project.genruntimeconfig.cache
 E:\MyBigProjects\ABC Money Transfer Project\ABC Money Transfer Project\ABCMoneyTransfer Project\obj\Debug\net8.0\ref\ABCMoneyTransfer_Project.dll
 E:\MyBigProjects\ABC Money Transfer Project\ABC Money Transfer Project\ABCMoneyTransfer Project\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\MyBigProjects\ABC Money Transfer Project\ABC Money Transfer Project\ABCMoneyTransfer Project\obj\Debug\net8.0\ABCMoneyTransfer_Project.sourcelink.json
